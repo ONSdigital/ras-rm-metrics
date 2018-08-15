@@ -1,0 +1,10 @@
+---
+applications:
+- instances: 1 # Should never be scaled
+  memory: 512M
+  env:
+    LOG_LEVEL: INFO
+    SCHEDULER_FREQUENCY: 15
+  services:
+  - rm-rabbitmq
+  - sdx-rabbitmq
