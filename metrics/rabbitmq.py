@@ -8,9 +8,10 @@ class RabbitMQ:
     def __init__(self, logger, cf_service_name):
         self.logger = logger
         self.cf_service_name = cf_service_name
+        self.services = self._get_services_from_cf()
 
     def log_metrics(self):
-        for service_name, uri in self._get_services_from_cf().items():
+        for service_name, uri in self.services.items():
             queues = self._fetch_metrics_for_all_queues(service_name, uri)
 
             for queue_metrics in queues:
