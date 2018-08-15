@@ -22,7 +22,7 @@ def init(frequency, debug):
     scheduler.start()
 
     rabbitmq = RabbitMQ(Logger(),
-                        os.getenv('RABBIT_SERVICE_NAME', 'rabbitmq'))
+                        os.getenv('RABBITMQ_SERVICE_NAME', 'rabbitmq'))
 
     scheduler.add_job(
         func=lambda : rabbitmq.log_metrics(),
