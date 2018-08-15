@@ -16,10 +16,6 @@ class Logger:
         logging.getLogger(logger).error(message)
 
 
-def get_rabbit_metrics():
-    RabbitMQ(Logger(), 'rabbitmq').log_metrics()
-
-
 def init(frequency, debug):
     logging.debug("Starting scheduler...")
     scheduler = BackgroundScheduler()
