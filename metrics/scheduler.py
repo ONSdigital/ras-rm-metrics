@@ -21,11 +21,10 @@ def init(frequency, debug):
     scheduler = BackgroundScheduler()
     scheduler.start()
 
-    rabbitmq = RabbitMQ(Logger(),
-                        os.getenv('RABBITMQ_SERVICE_NAME', 'rabbitmq'))
+    rabbitmq = RabbitMQ(Logger(), os.getenv('RABBITMQ_SERVICE_NAME', 'rabbitmq'))
 
     scheduler.add_job(
-        func=lambda : rabbitmq.log_metrics(),
+        func=lambda: rabbitmq.log_metrics(),
         trigger=IntervalTrigger(seconds=int(frequency)),
         id='rabbit_metrics',
         name='Print queue stats for all RabbitMQ queues.',

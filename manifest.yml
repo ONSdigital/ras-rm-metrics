@@ -1,10 +1,11 @@
 ---
 applications:
-- instances: 1 # Should never be scaled
+- name: ras_rm_metrics
+  instances: 1 # Should never be scaled
   memory: 512M
   env:
     LOG_LEVEL: INFO
     SCHEDULER_FREQUENCY: 15
+    DEV_PORT: 8888
   services:
   - rm-rabbitmq
-  - sdx-rabbitmq
