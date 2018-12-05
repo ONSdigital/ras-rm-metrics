@@ -10,4 +10,4 @@ inputs:
 - name: ras-rm-metrics-source
 
 run:
-  path: ras-rm-metrics-source/ci/smoke_tests.sh
+  path: ras-rm-metrics-source/ci/smoke_test.sh
