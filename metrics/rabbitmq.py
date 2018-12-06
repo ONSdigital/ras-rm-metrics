@@ -49,8 +49,8 @@ class RabbitMQ:
 
     def _log_queue_metrics(self, service_name, queue_metrics):
         logger.info(
-            self._queue_logger_name(queue_metrics['name']),
-            json.dumps({'messages': queue_metrics['messages']}))
+            self._queue_logger_name(service_name, queue_metrics['name']),
+            messages=queue_metrics['messages'])
 
     def _queue_logger_name(self, service_name, queue_name):
         return f'{self._service_logger_name(service_name)}.{queue_name}'
