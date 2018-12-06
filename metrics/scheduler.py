@@ -10,13 +10,6 @@ from structlog import wrap_logger
 
 logger = wrap_logger(logging.getLogger(__name__))
 
-# class Logger:
-#     def info(self, logger, message):
-#         logging.getLogger(logger).info(message)
-#
-#     def error(self, logger, message):
-#         logging.getLogger(logger).error(message)
-
 
 def init(frequency, debug):
     logger.debug("Starting scheduler...")
@@ -32,7 +25,7 @@ def init(frequency, debug):
         name='Print queue stats for all RabbitMQ queues.',
         replace_existing=True)
 
-    # if not debug:
-    #     logging.getLogger('apscheduler').setLevel(logging.WARNING)
+    if not debug:
+        logging.getLogger('apscheduler').setLevel(logging.ERROR)
 
     atexit.register(lambda: scheduler.shutdown())

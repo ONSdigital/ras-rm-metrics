@@ -11,7 +11,6 @@ logger = wrap_logger(logging.getLogger(__name__))
 
 class RabbitMQ:
     def __init__(self, cf_service_name):
-        # self.logger = logger
         self.cf_service_name = cf_service_name
         self.services = self._get_services_from_cf()
 
