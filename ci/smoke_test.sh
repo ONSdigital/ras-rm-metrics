@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -e
 
 apt-get --assume-yes update && apt-get --assume-yes install curl
