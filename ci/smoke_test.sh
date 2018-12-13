@@ -1,6 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh bash
 set -e
 
-apt-get --assume-yes update && apt-get --assume-yes install curl
+apk update
+apk upgrade
+#apk add bash
+apk add curl
+#apt-get --assume-yes update && apt-get --assume-yes install curl
 
 curl -qf "${TARGET_URL}"
