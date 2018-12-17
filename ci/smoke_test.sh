@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
-apt-get update
-apt-get install curl
+apk update
+apk upgrade
+apk add curl
 
 curl -qf "${TARGET_URL}"

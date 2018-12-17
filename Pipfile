@@ -9,6 +9,8 @@ apscheduler = "*"
 cfenv = "*"
 requests = "*"
 gunicorn = "*"
+orderedmultidict = "*"
+structlog = "*"
 
 [dev-packages]
 httpretty = "*"

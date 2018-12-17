@@ -2,11 +2,15 @@ import json
 
 import cfenv
 import requests
+import logging
+
+from structlog import wrap_logger
+
+logger = wrap_logger(logging.getLogger(__name__))
 
 
 class RabbitMQ:
-    def __init__(self, logger, cf_service_name):
-        self.logger = logger
+    def __init__(self, cf_service_name):
         self.cf_service_name = cf_service_name
         self.services = self._get_services_from_cf()
 
@@ -27,7 +31,7 @@ class RabbitMQ:
         response = requests.get(uri)
 
         if response.status_code != requests.codes.ok:
-            self.logger.error(
+            logger.error(
                 self._service_logger_name(service),
                 f'GET {uri} - [{response.status_code}] - {response.text}')
             return []
@@ -43,9 +47,9 @@ class RabbitMQ:
         }
 
     def _log_queue_metrics(self, service_name, queue_metrics):
-        self.logger.info(
-            self._queue_logger_name(service_name, queue_metrics['name']),
-            json.dumps({'messages': queue_metrics['messages']}))
+        logger.info(
+            queue=self._queue_logger_name(service_name, queue_metrics['name']),
+            messages=queue_metrics['messages'])
 
     def _queue_logger_name(self, service_name, queue_name):
         return f'{self._service_logger_name(service_name)}.{queue_name}'
