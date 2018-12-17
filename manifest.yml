@@ -2,7 +2,7 @@
 applications:
 - name: ras_rm_metrics
   instances: 1 # Should never be scaled
-  memory: 512M
+  memory: 128M
   env:
     LOG_LEVEL: INFO
     SCHEDULER_FREQUENCY: 15
